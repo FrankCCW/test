@@ -1,0 +1,21 @@
+repositories {
+	mavenCentral()
+	maven {
+			url "http://maven.bbpd.io/content/groups/public"
+	}
+}
+apply plugin: 'java'
+sourceSets {
+	main{
+		java{
+			srcDir 'src/main/java'
+			srcDir 'src/patch/java'
+		}
+	}
+	integration {
+		java {
+			srcDir 'src/integration/java'
+		}
+		compileClasspath += sourceSets.main.runtimeClasspath + sourceSets.test.runtimeClasspath
+	}
+}
